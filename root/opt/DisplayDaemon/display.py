@@ -4,9 +4,9 @@ import time
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
-import Image
-import ImageFont
-import ImageDraw
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
 
 class Display:
 	def __init__(self, RST):
