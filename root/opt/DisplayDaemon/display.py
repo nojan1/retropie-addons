@@ -21,7 +21,7 @@ class Display:
 		self.disp.display()
 	
 	def SelectFont(self, font = None):
-		if font = None:
+		if font == None:
 			self.font = ImageFont.load_default()
 		else:
 			self.font = ImageFont.truetype(font)
