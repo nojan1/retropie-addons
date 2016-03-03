@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd $1
-cp -r root/* /
+cp -r root/* / 
