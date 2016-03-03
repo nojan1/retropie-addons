@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from time import delay
+from time import sleep
 
 PIE_SENSE = 18
 PIE_SIGNAL = 16
@@ -16,4 +16,4 @@ def PieOFF():
 GPIO.add_event_detect(PIE_SENSE, GPIO.FALLING, callback=PieOFF, bouncetime=300)    
 
 while run:
-	delay(50)
+	sleep(1)
