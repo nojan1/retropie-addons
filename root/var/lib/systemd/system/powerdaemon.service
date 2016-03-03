@@ -1,3 +1,9 @@
 [Unit]
+Description=Monitors GPIO ports and controls power
+
+[Service]
 ExecStart=python /opt/Power/powerdaemon.py
 Type=simple
+
+[Install]
+WantedBy=multi-user.target

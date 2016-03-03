@@ -1,3 +1,9 @@
 [Unit]
+Description=Display service
+
+[Service]
 ExecStart=python /opt/DisplayDaemon/main.py
 Type=simple
+
+[Install]
+WantedBy=multi-user.target
