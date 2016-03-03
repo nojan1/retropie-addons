@@ -5,7 +5,7 @@ from display import Display
 import os
 
 disp = Display(RSTPIN)
-disp.SetFont(FONT)
+disp.SelectFont(FONT)
 
 if not os.path.exists(PIPEPATH):
 	os.mkfifo(PIPEPATH)
