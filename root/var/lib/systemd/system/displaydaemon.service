@@ -1,0 +1,3 @@
+[Unit]
+ExecStart=python /opt/DisplayDaemon/main.py
+Type=simple

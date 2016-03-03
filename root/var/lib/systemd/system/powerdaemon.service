@@ -1,0 +1,3 @@
+[Unit]
+ExecStart=python /opt/Power/powerdaemon.py
+Type=simple
