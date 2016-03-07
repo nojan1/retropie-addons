@@ -15,7 +15,8 @@ GPIO.output(PIE_SIGNAL, True)
 
 def PieOFF():
 	run = False
-	os.system("sudo halt")
+	GPIO.output(PIE_SIGNAL, False)
+	os.system("halt")
 	
 GPIO.add_event_detect(PIE_SENSE, GPIO.FALLING, callback=PieOFF, bouncetime=300)    
 
