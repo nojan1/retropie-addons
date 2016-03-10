@@ -32,18 +32,18 @@ class Display:
 			raise Exception("Font not set")
 			
 		self.draw.text((x, y), text, font=self.font, fill=255)
+	
+	def PutTextCenter(self, text):
+		if not self.font:
+			raise Exception("Font not set")
 
-    def CenterText(self, text):
-        if not self.font:
-                raise Exception("Font not set")
+		size = self.font.getsize(text)
 
-        size = self.font.getsize(text)
+		x = (self.disp.width - size[0]) / 2
+		y = (self.disp.height - size[1]) / 2
 
-        x = (self.disp.width - size[0]) / 2
-        y = (self.disp.height - size[1]) / 2
-
-        self.draw.text((x, y), text, font=self.font, fill=255)
-    	
+		self.draw.text((x, y), text, font=self.font, fill=255)
+		
 	def PutImage(self, x, y, image):
 		if type(image) is str:
 			image = Image.open(image).convert('1')
@@ -54,6 +54,6 @@ class Display:
 		self.draw.rectangle((0, 0, self.disp.width, self.disp.height), outline=0, fill=0)
 		
 	def Show(self):
-        sys.stderr.write("Redrawing display \n")
+		sys.stderr.write("Redrawing display \n")
 		self.disp.image(self.buffer)
 		self.disp.display()

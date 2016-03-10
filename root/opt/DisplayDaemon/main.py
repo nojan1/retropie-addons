@@ -11,6 +11,8 @@ if not os.path.exists(PIPEPATH):
 	os.mkfifo(PIPEPATH)
 	
 pipe = open(PIPEPATH, "r")
+
+disp.PutTextCenter("Display ready")
 	
 while True:
 	try:
@@ -19,20 +21,20 @@ while True:
 		if len(parts) == 0:
 			continue
 			
-        sys.stderr.write("Read line from fifo: " + line + "\n")
-            
+		sys.stderr.write("Read line from fifo: " + line + "\n")
+			
 		if parts[0] == "gamestart":
 			disp.Clear()
-			disp.SetText(10, 10, parts[1] + " was just launched")
+			disp.PutText(10, 10, parts[1] + " was just launched")
 		elif parts[0] == "gamestop":
-            disp.Clear()
-			disp.SetText(10, 10, "In Menu")
+			disp.Clear()
+			disp.PutText(10, 10, "In Menu")
 
 		disp.Show()
 		
 	except (KeyboardInterrupt, SystemExit):
 		break
-	except e:
-        sys.stderr.write("Exception: " + e + "\n")
+	except Exception as e:
+		sys.stderr.write("Exception: " + e.message + "\n")
 		continue
 	
