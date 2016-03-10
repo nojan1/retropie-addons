@@ -2,7 +2,7 @@
 Description=Monitors GPIO ports and controls power
 
 [Service]
-ExecStart=python /opt/Power/powerdaemon.py
+ExecStart=/usr/bin/python /opt/Power/powerdaemon.py
 Type=simple
 
 [Install]

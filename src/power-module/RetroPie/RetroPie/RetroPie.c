@@ -24,6 +24,7 @@ ISR (ADC_vect)
 
 ISR (PCINT1_vect)
 {
+	cli();
 	//PWR Switch or raspberry pie sense
 	_delay_ms(50);
 
@@ -54,6 +55,8 @@ ISR (PCINT1_vect)
 		////Raspberry switched off
 		//SetState(OFF);
 	//}
+	
+	sei();
 }
 
 int main(void)

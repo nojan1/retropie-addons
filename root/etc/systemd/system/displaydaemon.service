@@ -2,7 +2,7 @@
 Description=Display service
 
 [Service]
-ExecStart=python /opt/DisplayDaemon/main.py
+ExecStart=/usr/bin/python /opt/DisplayDaemon/main.py
 Type=simple
 
 [Install]
