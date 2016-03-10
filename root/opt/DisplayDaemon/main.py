@@ -2,9 +2,9 @@
 
 from config import *
 from display import Display
-import os
+import os, sys
 
-disp = Display(RSTPIN)
+disp = Display(RSTPIN, 1, 0x3d)
 disp.SelectFont(FONT)
 
 if not os.path.exists(PIPEPATH):
@@ -19,17 +19,20 @@ while True:
 		if len(parts) == 0:
 			continue
 			
+        sys.stderr.write("Read line from fifo: " + line + "\n")
+            
 		if parts[0] == "gamestart":
 			disp.Clear()
 			disp.SetText(10, 10, parts[1] + " was just launched")
 		elif parts[0] == "gamestop":
-			displ.SetText(10, 10, "In Menu")
-			disp.Clear()
-		
+            disp.Clear()
+			disp.SetText(10, 10, "In Menu")
+
 		disp.Show()
 		
 	except (KeyboardInterrupt, SystemExit):
 		break
-	except:
+	except e:
+        sys.stderr.write("Exception: " + e + "\n")
 		continue
 	
