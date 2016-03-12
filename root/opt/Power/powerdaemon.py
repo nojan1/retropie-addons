@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 from time import sleep
 import os
 
-PIE_SENSE = 18
-PIE_SIGNAL = 16
+PIE_SENSE = 16
+PIE_SIGNAL = 18
 
 run = True
 
