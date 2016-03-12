@@ -1,13 +1,14 @@
 #!/usr/bin/python
 
-import xmlrpc.client
+#import xmlrpc.client as client
+import xmlrpclib as client
 import sys
 
 if len(sys.argv) < 2:
     sys.stderr.write("Error: not enough argumets\n")
     sys.exit(1)
 
-s = xmlrpc.client.ServerProxy('http://localhost:9090')
+s = client.ServerProxy('http://localhost:9090')
 
 if len(sys.argv) == 2:
     result = s.displayTextCentered(sys.argv[1])

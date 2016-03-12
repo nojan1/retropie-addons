@@ -4,7 +4,8 @@ from config import *
 from display import Display
 import os, sys
 
-from xmlrpc.server import SimpleXMLRPCServer
+#from xmlrpc.server import SimpleXMLRPCServer
+from SimpleXMLRPCServer import SimpleXMLRPCServer
 
 server = SimpleXMLRPCServer(("localhost", 9090))
 
