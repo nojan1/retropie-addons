@@ -13,10 +13,13 @@ disp = Display(RSTPIN, 1, 0x3d)
 disp.SelectFont(FONT)
 
 disp.PutTextCenter("Display ready")
+disp.Show()
 
 def displayTextCentered(text):
         try:
+                disp.Clear()
                 disp.PutTextCenter(text)
+                disp.Show()
                 return (True, "")
         except Exception as e:
                 return (False, e.message)
