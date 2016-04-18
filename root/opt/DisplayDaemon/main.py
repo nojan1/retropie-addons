@@ -13,6 +13,7 @@ if not os.path.exists(PIPEPATH):
 pipe = open(PIPEPATH, "r")
 
 disp.PutTextCenter("Display ready")
+disp.Show()
 	
 while True:
 	try:
