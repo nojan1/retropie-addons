@@ -5,9 +5,14 @@ if [ ! -f ./install.sh ]; then
 	exit 1
 fi
 
-mv /opt/DisplayDaemon/config.py config.backup
-cp -r root/* /
-mv config.backup /opt/DisplayDaemon/config.py
+BASEPATH=$(pwd)
 
-patchfiles=$(patches/*.patch)
-cd / && patch -b -N -p0 -i $patchfiles
+if [ -f /opt/DisplayDaemon/config.py ]; then
+	echo "Backing up old display daemon config file. It will be restored"
+	mv /opt/DisplayDaemon/config.py config.backup
+fi
+
+cp -r root/* /
+[ -f config.backup ] && mv config.backup /opt/DisplayDaemon/config.py
+
+patch -d / -b -N -p0 -i $BASEPATH/patches/*.patch
