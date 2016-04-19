@@ -1,6 +1,9 @@
 #!/bin/sh
 
-[ ! -f ./install.sh ] && (echo "Please run script from the retropie-addons directory"; exit 1)
+if [ ! -f ./install.sh ]; then
+	echo "Please run script from the retropie-addons directory" 
+	exit 1
+fi
 
 mv /opt/DisplayDaemon/config.py config.backup
 cp -r root/* /
