@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/c,visualstudiocode
 
+Debug/*
+
 ### C ###
 # Object files
 *.o
@@ -17,6 +19,9 @@
 *.a
 *.la
 *.lo
+
+*.map
+*.elf
 
 # Shared objects (inc. Windows DLLs)
 *.dll
