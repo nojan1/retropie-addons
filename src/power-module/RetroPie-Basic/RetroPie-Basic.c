@@ -37,7 +37,7 @@ int main(void)
         while(PINC & (1 << PWR_SWITCH))
         {
 	        powerbuttonDownCounter++;
-	        _delay_ms(20);
+	        _delay_ms(40);
         }
 		
 		if(powerbuttonDownCounter >= SHORT_CLICK)
@@ -47,7 +47,7 @@ int main(void)
 				PORTC &= ~(1 << PWR_RELAY);
 				
 				PORTD |= (1 << LED1) | (1 << LED2) | (1 << LED3) | (1 << LED4);
-				_delay_ms(200);
+				_delay_ms(500);
 			}else{
 				isRunning = 1;
 				PORTC |= (1 << PWR_RELAY);
@@ -61,6 +61,8 @@ int main(void)
 					PORTD &= ~((1 << LED1) | (1 << LED2) | (1 << LED3) | (1 << LED4));
 					_delay_ms(100);
 				}
+				
+				_delay_ms(500);
 			}
 		}
     }
