@@ -28,25 +28,28 @@ def displayTextCentered(text):
 	
 def displayImageWithText(imagename, text):
 	try:
-		disp.clear()
+		disp.Clear()
 	
 		try:
 			if not imagename.endswith(IMAGEEXTENSION):
 				imagename = imagename + "." + IMAGEEXTENSION
 				
-			if not os.path.exists(IMAGEDIR + "/" + imagename)
+			if not os.path.exists(IMAGEDIR + "/" + imagename):
 				raise Exception("No such image " + imagename)
 			
-			image = Image.open(imagename)
+			image = Image.open(IMAGEDIR + "/" + imagename)
 			disp.PutImageCenteredOnRow(5, image)
 			disp.PutText(10,50, text)
 			
-		except Exception as e2:
-			sys.stderr.write(e2.Message + "\n")
-			disp.PutTextCenter(text)
+			disp.Show()
 			
-		disp.Show())
-		
+		except Exception as e2:
+			sys.stderr.write(e2.message + "\n")
+			disp.PutTextCenter(text)
+			disp.Show()
+			
+			raise e2
+
 		return (True, "")
 	except Exception as e:
 		return (False, e.message)
