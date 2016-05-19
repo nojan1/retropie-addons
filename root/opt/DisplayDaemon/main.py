@@ -4,6 +4,8 @@ from config import *
 from display import Display
 import os, sys
 
+from PIL import Image
+
 #from xmlrpc.server import SimpleXMLRPCServer
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 
@@ -16,19 +18,38 @@ disp.PutTextCenter("Display ready")
 disp.Show()
 
 def displayTextCentered(text):
-        try:
-                disp.Clear()
-                disp.PutTextCenter(text)
-                disp.Show()
-                return (True, "")
-        except Exception as e:
-                return (False, e.message)
-        
+	try:
+		disp.Clear()
+		disp.PutTextCenter(text)
+		disp.Show()
+		return (True, "")
+	except Exception as e:
+		return (False, e.message)
+	
 def displayImageWithText(imagename, text):
-        try:
-                return (True, "")
-        except Exception as e:
-                return (False, e.message)
+	try:
+		disp.clear()
+	
+		try:
+			if not imagename.endswith(IMAGEEXTENSION):
+				imagename = imagename + "." + IMAGEEXTENSION
+				
+			if not os.path.exists(IMAGEDIR + "/" + imagename)
+				raise Exception("No such image " + imagename)
+			
+			image = Image.open(imagename)
+			disp.PutImageCenteredOnRow(5, image)
+			disp.PutText(10,50, text)
+			
+		except Exception as e2:
+			sys.stderr.write(e2.Message + "\n")
+			disp.PutTextCenter(text)
+			
+		disp.Show())
+		
+		return (True, "")
+	except Exception as e:
+		return (False, e.message)
 
 server.register_function(displayTextCentered)
 server.register_function(displayImageWithText)

@@ -44,6 +44,16 @@ class Display:
 
 		self.draw.text((x, y), text, font=self.font, fill=255)
 		
+	def PutImageCenteredOnRow(self, y, image):
+		targetWidth = 100
+		if image.size[0] > targetWidth:
+			ratio = targetWidth / image.size[0]
+			image = image.resize((targetWidth, image.size[1] * ratio))
+			
+		x = (self.disp.width / 2) - (image.size[0] / 2)
+		
+		self.buffer.paste(image, (x,y))
+		
 	def PutImage(self, x, y, image):
 		if type(image) is str:
 			image = Image.open(image).convert('1')
