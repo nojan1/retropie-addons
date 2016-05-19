@@ -38,7 +38,7 @@ def displayImageWithText(imagename, text):
 				raise Exception("No such image " + imagename)
 			
 			image = Image.open(IMAGEDIR + "/" + imagename)
-			disp.PutImageCenteredOnRow(5, image)
+			disp.PutImageCenteredOnRow(3, image)
 			disp.PutText(10,50, text)
 			
 			disp.Show()
